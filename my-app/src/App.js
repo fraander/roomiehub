@@ -8,7 +8,7 @@ function App() {
           This is Roomie Hub.
         </h1>
 
-        <p>Manage tasks with your roomates.</p>
+        <p>Manage tasks with your roommates.</p>
       </header>
     </div>
   );
