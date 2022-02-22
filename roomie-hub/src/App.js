@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from "react";
 import './App.css';
 
 import Button from '@mui/material/Button';
@@ -62,14 +63,33 @@ const NewChoreModal = () => {
 };
 
 function App() {
+  const [showNewChoreModal, setNewChoreModal] = useState(false);
+
+  const handleShowNewChoreModal = (e) => {
+    setNewChoreModal(e.target.checked);
+  };
+
+  const toggleableNewChoreModal = (e) => {
+    if (showNewChoreModal) {
+      return <NewChoreModal />;
+    }
+    return null;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Welcome to Roomie Hub</h1>
         <p>Keep track of chores with your roommates!</p>
 
+        <p>
+          <Button
+            variant="contained"
+            // make this button show the modal something
+          >New Chore</Button>
+        </p>
 
-        <NewChoreModal />
+        <toggleableNewChoreModal/>
       </header>
     </div>
   );
