@@ -10,13 +10,7 @@ import Stack from '@mui/material/Stack';
 
 const preview_roommates = ["Frank", "Theo", "Venna"]
 
-// const preview_chores = {
-//   chore_1: {
-//     title: "Take out trash",
-//     // assignee: user_f,
-//     description: "Bag is full. Once trash is taken out the bag also needs replacing."
-//   }
-// }
+
 
 const NewChoreModal = () => {
   const roommates = preview_roommates // get this list from the backend
@@ -65,17 +59,6 @@ const NewChoreModal = () => {
 function App() {
   const [showNewChoreModal, setNewChoreModal] = useState(false);
 
-  const handleShowNewChoreModal = (e) => {
-    setNewChoreModal(e.target.checked);
-  };
-
-  const toggleableNewChoreModal = (e) => {
-    if (showNewChoreModal) {
-      return <NewChoreModal />;
-    }
-    return null;
-  }
-
   return (
     <div className="App">
       <header className="App-header">
@@ -83,13 +66,28 @@ function App() {
         <p>Keep track of chores with your roommates!</p>
 
         <p>
-          <Button
-            variant="contained"
-            // make this button show the modal something
-          >New Chore</Button>
+          {showNewChoreModal == false
+            ? <Stack spacing={2}>
+              <Button 
+              // when this is a modal this part can disappear
+                variant="contained"
+                onClick={() => setNewChoreModal(!showNewChoreModal)}
+              >
+                Cancel
+              </Button>
+
+              <NewChoreModal />
+            </Stack>
+            : <Button
+              variant="contained"
+              onClick={() => setNewChoreModal(!showNewChoreModal)}
+            >
+              New Chore
+            </Button>
+          }
         </p>
 
-        <toggleableNewChoreModal/>
+        <toggleableNewChoreModal />
       </header>
     </div>
   );
