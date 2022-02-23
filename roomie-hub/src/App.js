@@ -66,24 +66,29 @@ function App() {
         <p>Keep track of chores with your roommates!</p>
 
         <p>
-          {showNewChoreModal == false
-            ? <Stack spacing={2}>
-              <Button 
-              // when this is a modal this part can disappear
-                variant="contained"
-                onClick={() => setNewChoreModal(!showNewChoreModal)}
-              >
-                Cancel
-              </Button>
-
-              <NewChoreModal />
-            </Stack>
-            : <Button
+          {showNewChoreModal == true
+            ? <Button
               variant="contained"
               onClick={() => setNewChoreModal(!showNewChoreModal)}
             >
               New Chore
             </Button>
+            : <Button
+              variant="contained"
+              onClick={() => setNewChoreModal(!showNewChoreModal)}
+            >
+              Cancel
+            </Button>
+
+          }
+        </p>
+
+        <p>
+          {showNewChoreModal == true
+            ? <Stack spacing={2}>
+              <NewChoreModal />
+            </Stack>
+            : null
           }
         </p>
 
