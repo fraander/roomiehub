@@ -2,22 +2,36 @@ import * as React from 'react';
 import { useState } from "react";
 import './App.css';
 
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
+import Modal from '@mui/material/Modal';
 
 const preview_roommates = ["Frank", "Theo", "Venna"]
 
-
-
 const NewChoreModal = () => {
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '70%',
+    bgcolor: 'background.paper',
+    // border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
   const roommates = preview_roommates // get this list from the backend
 
   return (
     <div>
-      <fieldset> {/*Need to style the fieldset a little more to match*/}
+      <Box sx={style}>
         <Stack spacing={2}>
           <legend><h2>Create new chore</h2></legend>
 
@@ -51,13 +65,19 @@ const NewChoreModal = () => {
           </p>
 
         </Stack>
-      </fieldset>
+      </Box>
     </div>
   );
 };
 
 function App() {
   const [showNewChoreModal, setNewChoreModal] = useState(false);
+  const handleShowNewChoreModal = () => setNewChoreModal(true);
+  const handleHideNewChoreModal = () => setNewChoreModal(false);
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <div className="App">
@@ -65,34 +85,20 @@ function App() {
         <h1>Welcome to Roomie Hub</h1>
         <p>Keep track of chores with your roommates!</p>
 
-        <p>
-          {showNewChoreModal == true
-            ? <Button
-              variant="contained"
-              onClick={() => setNewChoreModal(!showNewChoreModal)}
-            >
-              New Chore
-            </Button>
-            : <Button
-              variant="contained"
-              onClick={() => setNewChoreModal(!showNewChoreModal)}
-            >
-              Cancel
-            </Button>
+        <Button
+          variant="contained"
+          onClick={handleShowNewChoreModal}
+          style={{maxWidth: '150px'}}
+        >
+          New Chore
+        </Button>
 
-          }
-        </p>
-
-        <p>
-          {showNewChoreModal == true
-            ? <Stack spacing={2}>
-              <NewChoreModal />
-            </Stack>
-            : null
-          }
-        </p>
-
-        <toggleableNewChoreModal />
+        <Modal
+          open={showNewChoreModal}
+          onClose={handleHideNewChoreModal}
+        >
+          <NewChoreModal />
+        </Modal>
       </header>
     </div>
   );
