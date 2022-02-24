@@ -10,9 +10,9 @@ import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 import Modal from '@mui/material/Modal';
 
-const preview_roommates = ["Frank", "Theo", "Veena"]
+const preview_roommates = ["Frank", "Theo", "Venna"]
 
-const NewChoreModal = (showModal, handleHideModal) => {
+const NewChoreModal = () => {
 
   const style = {
     position: 'absolute',
@@ -44,7 +44,6 @@ const NewChoreModal = (showModal, handleHideModal) => {
           />
 
           <Select
-            labelId="assignee-select-label"
             label="Assignee" // Make this show up
             value="Frank" // Make this update properly
           >
@@ -60,15 +59,8 @@ const NewChoreModal = (showModal, handleHideModal) => {
             rows={4}
             defaultValue=""
           />
-
-
           <p>
-            <Button
-              onChange={handleHideModal}
-              variant="contained"
-            >
-              Create Chore
-            </Button>
+            <Button variant="contained">Create Chore</Button>
           </p>
 
         </Stack>
@@ -79,8 +71,8 @@ const NewChoreModal = (showModal, handleHideModal) => {
 
 function App() {
   const [showNewChoreModal, setNewChoreModal] = useState(false);
-  const handleShowNewChoreModal = () => {setNewChoreModal(true)};
-  const handleHideNewChoreModal = () => {setNewChoreModal(false)};
+  const handleShowNewChoreModal = () => setNewChoreModal(true);
+  const handleHideNewChoreModal = () => setNewChoreModal(false);
 
   return (
     <div className="App">
@@ -88,24 +80,19 @@ function App() {
         <h1>Welcome to Roomie Hub</h1>
         <p>Keep track of chores with your roommates!</p>
 
-        <Stack>
-          <Button
-            variant="contained"
-            onClick={handleShowNewChoreModal}
-          // style={{ maxWidth: '150px' }}
-          >
-            New Chore
-          </Button>
-        </Stack>
+        <Button
+          variant="contained"
+          onClick={handleShowNewChoreModal}
+          style={{maxWidth: '150px'}}
+        >
+          New Chore
+        </Button>
 
         <Modal
-          open={handleShowNewChoreModal}
+          open={showNewChoreModal}
           onClose={handleHideNewChoreModal}
         >
-          <NewChoreModal
-            showNewChoreModal={showNewChoreModal}
-            handleHideNewChoreModal={handleHideNewChoreModal}
-          />
+          <NewChoreModal />
         </Modal>
       </header>
     </div>
