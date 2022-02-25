@@ -52,7 +52,7 @@ const NewChoreModal = () => {
             ))}
           </Select>
 
-          <TextField // need to make width flexible
+          <TextField
             id="outlined-multiline-static"
             label="Description"
             multiline
@@ -61,6 +61,7 @@ const NewChoreModal = () => {
           />
           <p>
             <Button variant="contained">Create Chore</Button>
+            {/* Need help with passing state so that this button can impact the main window*/}
           </p>
 
         </Stack>
@@ -73,6 +74,8 @@ function App() {
   const [showNewChoreModal, setNewChoreModal] = useState(false);
   const handleShowNewChoreModal = () => setNewChoreModal(true);
   const handleHideNewChoreModal = () => setNewChoreModal(false);
+
+  const [chores, setChores] = useState([]);
 
   return (
     <div className="App">
@@ -87,6 +90,8 @@ function App() {
         >
           New Chore
         </Button>
+
+        {/* Table of different chores and their properties */}
 
         <Modal
           open={showNewChoreModal}
