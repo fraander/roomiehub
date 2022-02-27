@@ -2,8 +2,6 @@ import * as React from 'react';
 import { useState } from "react";
 import './App.css';
 
-import ContentView from "./NewChoreModal.js";
-
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -72,7 +70,7 @@ const NewChoreModal = () => {
   );
 };
 
-function App() {
+const ContentView = () => {
   const [showNewChoreModal, setNewChoreModal] = useState(false);
   const handleShowNewChoreModal = () => setNewChoreModal(true);
   const handleHideNewChoreModal = () => setNewChoreModal(false);
@@ -80,8 +78,30 @@ function App() {
   const [chores, setChores] = useState([]);
 
   return (
-    <ContentView/>
+    <div className="App">
+      <header className="App-header">
+        <h1>Welcome to Roomie Hub</h1>
+        <p>Keep track of chores with your roommates!</p>
+
+        <Button
+          variant="contained"
+          onClick={handleShowNewChoreModal}
+          style={{maxWidth: '150px'}}
+        >
+          New Chore
+        </Button>
+
+        {/* Table of different chores and their properties */}
+
+        <Modal
+          open={showNewChoreModal}
+          onClose={handleHideNewChoreModal}
+        >
+          <NewChoreModal />
+        </Modal>
+      </header>
+    </div>
   );
 }
 
-export default App;
+export default ContentView;
