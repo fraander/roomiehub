@@ -1,7 +1,7 @@
 import React from "react";
 import Chore from "./Chore";
 
-const Chores = ({ chores }) => {
+const ChoresTable = ({ chores }) => {
   return (
     <>
       {chores.map((chore) => {
@@ -14,4 +14,4 @@ const Chores = ({ chores }) => {
   );
 };
 
-export default Chores;
+export default ChoresTable;
