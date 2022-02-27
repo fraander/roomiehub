@@ -51,8 +51,8 @@ function App() {
       <div style={{ width: "50%", position: "relative", left: "30%" }}>
         <Form onAdd={addChore} />
       </div>
-      <h2 style={{position: 'relative', left: '40%'}}>My Chores</h2>
-      <div style={{display: 'flex', margin: 'auto'}}>
+      <h2 style={{ position: "relative", left: "40%" }}>My Chores</h2>
+      <div style={{ display: "flex", margin: "auto" }}>
         <Chores chores={chores} />
       </div>
     </div>
