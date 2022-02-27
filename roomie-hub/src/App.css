@@ -1,6 +1,11 @@
+
 .App {
   text-align: left;
   padding: 20px;
+}
+
+tableHeader {
+  font-weight: bold;
 }
 
 .App-header {
