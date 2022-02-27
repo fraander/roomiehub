@@ -1,7 +1,8 @@
 import "./App.css";
-import ChoresTable from "./components/Chores";
+import ChoreTable from "./components/ChoresTable";
 import NewChoreModal from "./components/NewChoreModal.js";
 
+import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 
@@ -47,19 +48,21 @@ function App() {
         <NewChoreModal onAdd={addChore} />
       </Modal>
 
-      <h1>Roomie Hub</h1>
+      <h1>
+        Roomie Hub
+      </h1>
 
-      <Button
-        variant="contained"
-        onClick={handleShowNewChoreModal}
-        style={{ maxWidth: '150px' }}
-      >
-        New Chore
-      </Button>
+      <Stack spacing={2}>
+        <Button
+          variant="contained"
+          onClick={handleShowNewChoreModal}
+          style={{ maxWidth: '150px' }}
+        >
+          New Chore
+        </Button>
 
-      <div style={{ display: "flex", margin: "auto" }}>
-        <ChoresTable chores={chores} />
-      </div>
+        <ChoreTable rows={chores} />
+      </Stack>
     </div>
   );
 }
