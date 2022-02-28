@@ -39,6 +39,10 @@ function App() {
     handleHideNewChoreModal();
   };
 
+  const removeChore = (chore) => {
+    setChores( chores.filter((c) => c.id !== chore.id) )
+  }
+
   return (
     <div className="App">
       <Modal
@@ -61,7 +65,7 @@ function App() {
           New Chore
         </Button>
 
-        <ChoreTable rows={chores} />
+        <ChoreTable rows={chores} onDelete={removeChore} />
       </Stack>
     </div>
   );
