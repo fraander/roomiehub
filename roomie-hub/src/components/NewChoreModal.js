@@ -5,9 +5,15 @@ import '../App.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
+
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DatePicker from '@mui/lab/DatePicker'
 
 const preview_roommates = ["Frank", "Theo", "Venna"]
 
@@ -16,7 +22,7 @@ const NewChoreModal = ({ onAdd }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [assignee, setAssignee] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const [dueDate, setDueDate] = useState(new Date()); // YYYY-MM-DD
 
   const addChore = (e) => {
     e.preventDefault();
@@ -26,20 +32,10 @@ const NewChoreModal = ({ onAdd }) => {
     setTitle("");
     setDescription("");
     setAssignee("");
-    setDueDate(getToday()); // TODO: fix
+    setDueDate(""); // TODO: fix
 
     // >> hide modal
   };
-
-  const getToday = () => {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '-' + mm + '-' + dd;
-    return(today);
-  }
 
   const style = {
     position: 'absolute',
@@ -68,23 +64,32 @@ const NewChoreModal = ({ onAdd }) => {
             onChange={(e) => setTitle(e.target.value)}
           />
 
-          <TextField
-            id="date"
-            label="Due Date"
-            type="date"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-          />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DatePicker
+              label="Due Date"
+              value={dueDate}
+              onChange={(newValue) => {
+                setDueDate(newValue);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
 
-          <Select
-            label="Assignee" // Make this show up
-            value={assignee} // Make this update properly
-            onChange={(e) => setAssignee(e.target.value)}
-          >
-            {roommates.map((roommate) => (
-              <MenuItem value={roommate}>{roommate}</MenuItem>
-            ))}
-          </Select>
+          <FormControl>
+            <InputLabel id="assignee-label">Assignee</InputLabel>
+            <Select
+              labelId="assignee-label"
+              id="assignee-label"
+              value={assignee}
+              label="Assignee"
+              onChange={(e) => setAssignee(e.target.value)}
+            >
+              <MenuItem value={""}>None</MenuItem>
+              {roommates.map((roommate) => (
+                <MenuItem value={roommate}>{roommate}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
 
           <TextField
             id="outlined-multiline-static"
