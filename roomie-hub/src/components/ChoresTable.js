@@ -18,10 +18,10 @@ export default function ChoreTable({ chores, onRemove }) {
                 <TableHead>
                     <TableRow>
                         <TableCell width="1px"></TableCell>
-                        <TableCell align="center"><tableHeader>Title</tableHeader></TableCell>
-                        <TableCell align="center"><tableHeader>Due Date</tableHeader></TableCell>
-                        <TableCell align="center"><tableHeader>Assignee</tableHeader></TableCell>
-                        <TableCell align="center"><tableHeader>Description</tableHeader></TableCell>
+                        <TableCell align="leading"><tableHeader>Title</tableHeader></TableCell>
+                        <TableCell align="leading"><tableHeader>Due Date</tableHeader></TableCell>
+                        <TableCell align="leading"><tableHeader>Assignee</tableHeader></TableCell>
+                        <TableCell align="leading"><tableHeader>Description</tableHeader></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
