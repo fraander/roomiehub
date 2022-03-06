@@ -40,7 +40,10 @@ function App() {
   };
 
   const removeChore = (chore) => {
-    setChores( chores.filter((c) => c.id !== chore.id) )
+    console.log(chore)
+    const newChores = chores.filter((c) => c.id !== chore.id)
+    console.log(newChores)
+    setChores( newChores )
   }
 
   return (
@@ -65,7 +68,7 @@ function App() {
           New Chore
         </Button>
 
-        <ChoreTable rows={chores} onDelete={removeChore} />
+        <ChoreTable chores={chores} onRemove={removeChore} />
       </Stack>
     </div>
   );

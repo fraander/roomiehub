@@ -10,14 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-export default function ChoreTable({ rows }, { onRemove }) {
-
-    const [checked, setChecked] = React.useState(false);
-
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-        console.log("pressed")
-    };
+export default function ChoreTable({ chores, onRemove }) {
 
     return (
         <TableContainer component={Paper}>
@@ -32,19 +25,19 @@ export default function ChoreTable({ rows }, { onRemove }) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {chores.map((chore) => (
                         <TableRow
-                            key={row.title}
+                            key={chore.title}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell align="center">
-                                <CheckButton onRemove={onRemove}/>
+                                <CheckButton onRemove={() => onRemove(chore)}/>
                             </TableCell>
 
-                            <TableCell align="center">{row.title}</TableCell>
-                            <TableCell align="center">{row.dueDate}</TableCell>
-                            <TableCell align="center">{row.assignee}</TableCell>
-                            <TableCell align="leading">{row.description}</TableCell>
+                            <TableCell align="center">{chore.title}</TableCell>
+                            <TableCell align="center">{chore.dueDate}</TableCell>
+                            <TableCell align="center">{chore.assignee}</TableCell>
+                            <TableCell align="leading">{chore.description}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
