@@ -30,13 +30,13 @@ export default function ChoreTable({ chores, onRemove }) {
                             key={chore.title}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell align="center">
+                            <TableCell align="leading">
                                 <CheckButton onRemove={() => onRemove(chore)}/>
                             </TableCell>
 
-                            <TableCell align="center">{chore.title}</TableCell>
-                            <TableCell align="center">{chore.dueDate}</TableCell>
-                            <TableCell align="center">{chore.assignee}</TableCell>
+                            <TableCell align="leading">{chore.title}</TableCell>
+                            <TableCell align="leading">{chore.dueDate}</TableCell>
+                            <TableCell align="leading">{chore.assignee}</TableCell>
                             <TableCell align="leading">{chore.description}</TableCell>
                         </TableRow>
                     ))}
