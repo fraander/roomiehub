@@ -34,7 +34,7 @@ const NewAccountModal = ({ onAddAccount }) => {
     <div>
       <Box sx={style}>
         <Stack spacing={2}>
-          <legend><h2>Create account</h2></legend>
+          <legend><h2>New Roomie</h2></legend>
 
           <TextField
             id="filled-basic"
@@ -44,7 +44,7 @@ const NewAccountModal = ({ onAddAccount }) => {
             onChange={(e) => setName(e.target.value)}
           />
           <p>
-            <Button variant="contained" onClick={createAccount}>Create Account</Button>
+            <Button variant="contained" onClick={createAccount}>Add Roomie</Button>
           </p>
 
         </Stack>

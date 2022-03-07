@@ -15,9 +15,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker'
 
-const preview_roommates = ["Frank", "Theo", "Venna"]
-
-const NewChoreModal = ({ onAdd }) => {
+const NewChoreModal = ({ roommates, onAdd }) => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -25,14 +23,16 @@ const NewChoreModal = ({ onAdd }) => {
   const [dueDate, setDueDate] = useState(null);
 
   const addChore = (e) => {
-    e.preventDefault();
+    if (title !== "") {
+      e.preventDefault();
 
-    onAdd({ title, description, assignee, dueDate });
+      onAdd({ title, description, assignee, dueDate });
 
-    setTitle("");
-    setDescription("");
-    setAssignee("");
-    setDueDate(null);
+      setTitle("");
+      setDescription("");
+      setAssignee("");
+      setDueDate(null);
+    }
   };
 
   const style = {
@@ -46,8 +46,6 @@ const NewChoreModal = ({ onAdd }) => {
     p: 4,
   };
 
-  const roommates = preview_roommates // get this list from the backend
-
   return (
     <div>
       <Box sx={style}>
@@ -55,6 +53,7 @@ const NewChoreModal = ({ onAdd }) => {
           <legend><h2>Create new chore</h2></legend>
 
           <TextField
+            required
             id="filled-basic"
             label="Chore Title"
             variant="outlined"
@@ -84,7 +83,7 @@ const NewChoreModal = ({ onAdd }) => {
             >
               <MenuItem value={""}>None</MenuItem>
               {roommates.map((roommate) => (
-                <MenuItem value={roommate}>{roommate}</MenuItem>
+                <MenuItem value={roommate.name}>{roommate.name}</MenuItem>
               ))}
             </Select>
           </FormControl>

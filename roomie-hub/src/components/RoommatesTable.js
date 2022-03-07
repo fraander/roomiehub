@@ -1,34 +1,27 @@
 import * as React from 'react';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Box';
+
 
 export default function RoommatesTable({ accounts }) {
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell width="1px"></TableCell>
-                        <TableCell align="leading"><tableHeader>Name</tableHeader></TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
+        <Box
+            display="flex"
+            alignItems="leading"
+            sx={{
+                backgroundColor: 'primary.main'
+            }}
+        >
+            <Stack paddingLeft="20px" paddingRight="100px" spacing={0}>
+
+                <p style={{ color: 'white' }}><b>Roommates</b></p>
+                <ul style={{ color: 'white' }}>
                     {accounts.map((account) => (
-                        <TableRow
-                            key={account.id}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell align="leading"><p>{account.name}</p></TableCell>
-                        </TableRow>
+                        <li>{account.name}</li>
                     ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                </ul>
+            </Stack>
+        </Box>
     );
 }
