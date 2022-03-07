@@ -22,7 +22,7 @@ const NewChoreModal = ({ onAdd }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [assignee, setAssignee] = useState("");
-  const [dueDate, setDueDate] = useState(/*new Date()*/ null); // YYYY-MM-DD
+  const [dueDate, setDueDate] = useState(null);
 
   const addChore = (e) => {
     e.preventDefault();
@@ -32,9 +32,7 @@ const NewChoreModal = ({ onAdd }) => {
     setTitle("");
     setDescription("");
     setAssignee("");
-    setDueDate(""); // TODO: fix
-
-    // >> hide modal
+    setDueDate(null);
   };
 
   const style = {

@@ -27,7 +27,7 @@ export default function ChoreTable({ chores, onRemove }) {
                 <TableBody>
                     {chores.map((chore) => (
                         <TableRow
-                            key={chore.title}
+                            key={chore.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell align="leading">

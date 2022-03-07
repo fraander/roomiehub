@@ -1,34 +1,29 @@
 import "./App.css";
+
 import ChoreTable from "./components/ChoresTable";
+import RoommatesTable from "./components/RoommatesTable";
 import NewChoreModal from "./components/NewChoreModal.js";
+import NewAccountModal from "./components/NewAccountModal.js"
 
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 
-
 import { useState } from "react";
 
-/*
-design the basic chore component
-
-OneTimeChore:
-- represents a chore to complete containing
-- data:
-  - chore_id: unique id (int)
-  - title: title (string)
-  - description: description of the task (string)
-  - assignee: A User who the task is assigned to (string)
-  - due_date: date the chore must be completed by (string)
-*/
-
 function App() {
+
   const [showModal, setShowModal] = useState(false);
-  const [chores, setChores] = useState([]);
-
-
+  const [showNewAccountModal, setNewAccountModal] = useState(false);
+  
   const handleShowNewChoreModal = () => setShowModal(true);
   const handleHideNewChoreModal = () => setShowModal(false);
+
+  const handleShowNewAccountModal = () => setNewAccountModal(true);
+  const handleHideNewAccountModal = () => setNewAccountModal(false);
+ 
+  const [chores, setChores] = useState([]);
+  const [accounts, setAccounts] = useState([]);
 
   const addChore = (chore) => {
     const id = (Math.random() * 1000).toFixed(0); // generate uuid?
@@ -43,7 +38,16 @@ function App() {
     console.log(chore)
     const newChores = chores.filter((c) => c.id !== chore.id)
     console.log(newChores)
-    setChores( newChores )
+    setChores(newChores)
+  }
+
+  const addAccount = (account) => {
+    const id = (Math.random() * 1000).toFixed(0);
+    const newAccount = { id, ...account };
+    setAccounts([...accounts, newAccount])
+    console.log(accounts)
+
+    handleHideNewAccountModal();
   }
 
   return (
@@ -55,20 +59,39 @@ function App() {
         <NewChoreModal onAdd={addChore} />
       </Modal>
 
+      <Modal
+        open={showNewAccountModal}
+        onClose={handleHideNewAccountModal}
+      >
+        <NewAccountModal onAddAccount={addAccount} />
+      </Modal>
+
       <h1>
         Roomie Hub
       </h1>
 
       <Stack spacing={2}>
-        <Button
-          variant="contained"
-          onClick={handleShowNewChoreModal}
-          style={{ maxWidth: '150px' }}
-        >
-          New Chore
-        </Button>
+        <Stack direction="row" spacing={2}>
+          <Button
+            variant="contained"
+            onClick={handleShowNewChoreModal}
+            style={{ maxWidth: '150px' }}
+          >
+            New Chore
+          </Button>
+
+          <Button
+            variant="contained"
+            onClick={handleShowNewAccountModal}
+            style={{ maxWidth: '200px' }}
+          >
+            Create Account
+          </Button>
+        </Stack>
 
         <ChoreTable chores={chores} onRemove={removeChore} />
+
+        <RoommatesTable accounts={accounts}/>
       </Stack>
     </div>
   );
