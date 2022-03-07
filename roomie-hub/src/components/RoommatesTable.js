@@ -15,7 +15,7 @@ export default function RoommatesTable({ accounts }) {
         >
             <Stack paddingLeft="20px" paddingRight="100px" spacing={0}>
 
-                <h3 style={{color: 'white' }}>Roommates</h3>
+                <p style={{ color: 'white' }}><b>Roommates</b></p>
                 <ul style={{ color: 'white' }}>
                     {accounts.map((account) => (
                         <li>{account.name}</li>

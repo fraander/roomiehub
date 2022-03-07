@@ -56,7 +56,7 @@ function App() {
         open={showModal}
         onClose={handleHideNewChoreModal}
       >
-        <NewChoreModal onAdd={addChore} />
+        <NewChoreModal roommates={accounts} onAdd={addChore} />
       </Modal>
 
       <Modal
