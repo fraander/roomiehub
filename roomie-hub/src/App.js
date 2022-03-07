@@ -15,13 +15,13 @@ function App() {
 
   const [showModal, setShowModal] = useState(false);
   const [showNewAccountModal, setNewAccountModal] = useState(false);
-  
+
   const handleShowNewChoreModal = () => setShowModal(true);
   const handleHideNewChoreModal = () => setShowModal(false);
 
   const handleShowNewAccountModal = () => setNewAccountModal(true);
   const handleHideNewAccountModal = () => setNewAccountModal(false);
- 
+
   const [chores, setChores] = useState([]);
   const [accounts, setAccounts] = useState([]);
 
@@ -66,32 +66,37 @@ function App() {
         <NewAccountModal onAddAccount={addAccount} />
       </Modal>
 
-      <h1>
-        Roomie Hub
-      </h1>
-
       <Stack spacing={2}>
-        <Stack direction="row" spacing={2}>
-          <Button
-            variant="contained"
-            onClick={handleShowNewChoreModal}
-            style={{ maxWidth: '150px' }}
-          >
-            New Chore
-          </Button>
+        <Stack direction="row" spacing={4}>
+          <Stack>
+            <h1>
+              Roomie Hub
+            </h1>
 
-          <Button
-            variant="contained"
-            onClick={handleShowNewAccountModal}
-            style={{ maxWidth: '200px' }}
-          >
-            Create Account
-          </Button>
+            <Stack direction="row" spacing={2}>
+              <Button
+                variant="contained"
+                onClick={handleShowNewChoreModal}
+                style={{ maxWidth: '150px' }}
+              >
+                New Chore
+              </Button>
+
+              <Button
+                variant="contained"
+                onClick={handleShowNewAccountModal}
+                style={{ maxWidth: '200px' }}
+              >
+                Add Roommate
+              </Button>
+            </Stack>
+          </Stack>
+
+          <RoommatesTable accounts={accounts} /> {/* Round this box? */}
         </Stack>
 
         <ChoreTable chores={chores} onRemove={removeChore} />
 
-        <RoommatesTable accounts={accounts}/>
       </Stack>
     </div>
   );
