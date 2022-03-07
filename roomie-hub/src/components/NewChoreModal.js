@@ -15,8 +15,6 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker'
 
-const preview_roommates = ["Frank", "Theo", "Venna"]
-
 const NewChoreModal = ({ roommates, onAdd }) => {
 
   const [title, setTitle] = useState("");
