@@ -2,22 +2,48 @@ import "./App.css";
 
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
 
 import { useState } from "react";
 
-function LoginPage({onLogin}) {
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '70%',
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+  };
+
+function LoginPage({ onLogin }) {
+
+    const [username, setUsername] = useState("");
 
     return (
         <div className="App">
-            <Stack>
-                <Button
-                    onClick={onLogin}
-                >
-                Login
-                </Button>
-            </Stack>
-        </div>
+            <Box sx={style}>
+                <Stack spacing={2}>
+
+                    <TextField
+                        required
+                        id="filled-basic"
+                        label="Username"
+                        variant="outlined"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+
+                    <Button
+                        onClick={() => onLogin(username)}
+                    >
+                        Login
+                    </Button>
+                </Stack>
+            </Box>
+        </div >
     );
 }
 
