@@ -11,7 +11,7 @@ import Modal from '@mui/material/Modal';
 
 import { useState } from "react";
 
-function Dashboard() {
+function Dashboard({onLogout}) {
 
   const [showModal, setShowModal] = useState(false);
   const [showNewAccountModal, setNewAccountModal] = useState(false);
@@ -88,6 +88,14 @@ function Dashboard() {
                 style={{ maxWidth: '200px' }}
               >
                 Add Roommate
+              </Button>
+
+              <Button
+                variant="contained"
+                onClick={onLogout}
+                style={{ maxWidth: '200px' }}
+              >
+                Log Out
               </Button>
             </Stack>
           </Stack>
