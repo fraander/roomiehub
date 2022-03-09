@@ -6,22 +6,20 @@ import { useState } from "react";
 
 function App() {
 
-  const [showLoginPage, setShowLoginPage] = useState(true);
+  const [currentUser, setCurrentUser] = useState("")
 
-  const login = () => {
-    console.log("logged in")
-    setShowLoginPage(false);
+  const setUser = (username) => {
+    setCurrentUser(username);
   }
 
-  const logout = () => {
-    console.log("logged out")
-    setShowLoginPage(true);
+  const onLogout = () => {
+    setCurrentUser("");
   }
 
-  if (showLoginPage) {
-    return (<LoginPage onLogin={login}/>);
+  if (currentUser === "") {
+    return (<LoginPage onLogin={setUser} />);
   } else {
-    return (<Dashboard onLogout={logout} />);
+    return (<Dashboard onLogout={onLogout} currentUser={currentUser}/>);
   }
 }
 

@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Box';
 
 
-export default function RoommatesTable({ accounts }) {
+export default function RoommatesTable({ accounts, currentUser }) {
     return (
         <Box
             display="flex"
@@ -17,6 +17,7 @@ export default function RoommatesTable({ accounts }) {
 
                 <p style={{ color: 'white' }}><b>Roommates</b></p>
                 <ul style={{ color: 'white' }}>
+                    <li>{currentUser}</li>
                     {accounts.map((account) => (
                         <li>{account.name}</li>
                     ))}

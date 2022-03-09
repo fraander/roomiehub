@@ -15,7 +15,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker'
 
-const NewChoreModal = ({ roommates, onAdd }) => {
+const NewChoreModal = ({ roommates, onAdd, currentUser }) => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -82,6 +82,7 @@ const NewChoreModal = ({ roommates, onAdd }) => {
               onChange={(e) => setAssignee(e.target.value)}
             >
               <MenuItem value={""}>None</MenuItem>
+              <MenuItem value={currentUser}>{currentUser}</MenuItem>
               {roommates.map((roommate) => (
                 <MenuItem value={roommate.name}>{roommate.name}</MenuItem>
               ))}

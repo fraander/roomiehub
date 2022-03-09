@@ -11,7 +11,7 @@ import Modal from '@mui/material/Modal';
 
 import { useState } from "react";
 
-function Dashboard({onLogout}) {
+function Dashboard({onLogout, currentUser}) {
 
   const [showModal, setShowModal] = useState(false);
   const [showNewAccountModal, setNewAccountModal] = useState(false);
@@ -56,7 +56,7 @@ function Dashboard({onLogout}) {
         open={showModal}
         onClose={handleHideNewChoreModal}
       >
-        <NewChoreModal roommates={accounts} onAdd={addChore} />
+        <NewChoreModal roommates={accounts} onAdd={addChore} currentUser={currentUser} />
       </Modal>
 
       <Modal
@@ -70,7 +70,7 @@ function Dashboard({onLogout}) {
         <Stack direction="row" spacing={4}>
           <Stack>
             <h1>
-              Roomie Hub
+              Welcome, {currentUser}
             </h1>
 
             <Stack direction="row" spacing={2}>
@@ -100,10 +100,10 @@ function Dashboard({onLogout}) {
             </Stack>
           </Stack>
 
-          <RoommatesTable accounts={accounts} /> {/* Round this box? */}
+          <RoommatesTable accounts={accounts} currentUser={currentUser} /> {/* Round this box? */}
         </Stack>
 
-        <ChoreTable chores={chores} onRemove={removeChore} />
+        <ChoreTable chores={chores} onRemove={removeChore} currentUser={currentUser}/>
 
       </Stack>
     </div>
