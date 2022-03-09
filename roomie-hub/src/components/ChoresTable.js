@@ -35,7 +35,7 @@ export default function ChoreTable({ chores, onRemove }) {
                             </TableCell>
 
                             <TableCell align="leading">{chore.title}</TableCell>
-                            <TableCell align="leading">{chore.dueDate}</TableCell>
+                            <TableCell align="leading">{chore.dueDate.toLocaleDateString()}</TableCell>
                             <TableCell align="leading">{chore.assignee}</TableCell>
                             <TableCell align="leading">{chore.description}</TableCell>
                         </TableRow>
