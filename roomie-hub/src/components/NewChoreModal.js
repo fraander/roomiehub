@@ -94,7 +94,6 @@ const NewChoreModal = ({ roommates, onAdd, currentUser }) => {
             label="Description"
             multiline
             rows={4}
-            defaultValue=""
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />

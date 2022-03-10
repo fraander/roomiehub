@@ -1,7 +1,6 @@
 import "./App.css";
 
 import ChoreTable from "./components/ChoresTable";
-import RoommatesTable from "./components/RoommatesTable";
 import RoommatesList from "./components/RoommatesList.js";
 import NewChoreModal from "./components/NewChoreModal.js";
 import NewAccountModal from "./components/NewAccountModal.js"
@@ -78,7 +77,7 @@ function Dashboard({onLogout, currentUser}) {
               <Button
                 variant="contained"
                 onClick={handleShowNewChoreModal}
-                style={{ maxWidth: '150px' }}
+                style={{ maxWidth: '200px' }}
               >
                 New Chore
               </Button>
@@ -86,7 +85,7 @@ function Dashboard({onLogout, currentUser}) {
               <Button
                 variant="contained"
                 onClick={handleShowNewAccountModal}
-                style={{ maxWidth: '200px' }}
+                style={{ maxWidth: '300px' }}
               >
                 Add Roommate
               </Button>
@@ -103,7 +102,6 @@ function Dashboard({onLogout, currentUser}) {
 
           <RoommatesList accounts={accounts} currentUser={currentUser}/>
 
-          {/* <RoommatesTable accounts={accounts} currentUser={currentUser} />  */}
         </Stack>
 
         <ChoreTable chores={chores} onRemove={removeChore} currentUser={currentUser}/>

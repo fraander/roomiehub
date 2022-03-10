@@ -18,10 +18,10 @@ export default function ChoreTable({ chores, onRemove, currentUser }) {
                 <TableHead>
                     <TableRow>
                         <TableCell width="1px"></TableCell>
-                        <TableCell align="leading"><tableHeader>Title</tableHeader></TableCell>
-                        <TableCell align="leading"><tableHeader>Due Date</tableHeader></TableCell>
-                        <TableCell align="leading"><tableHeader>Assignee</tableHeader></TableCell>
-                        <TableCell align="leading"><tableHeader>Description</tableHeader></TableCell>
+                        <TableCell align="left">Title</TableCell>
+                        <TableCell align="left">Due Date</TableCell>
+                        <TableCell align="left">Assignee</TableCell>
+                        <TableCell align="left">Description</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -30,23 +30,17 @@ export default function ChoreTable({ chores, onRemove, currentUser }) {
                             key={chore.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell align="leading">
+                            <TableCell align="left">
                                 <CheckButton onRemove={() => onRemove(chore)}/>
                             </TableCell>
 
-                            <TableCell align="leading">{chore.title}</TableCell>
-                            <TableCell align="leading">{
+                            <TableCell align="left">{chore.title}</TableCell>
+                            <TableCell align="left">{
                                 chore.dueDate === null ? "" :
                             chore.dueDate.toLocaleDateString()
                             }</TableCell>
-                            <TableCell align="leading">{chore.assignee}</TableCell>
-                            <TableCell algin="leading">{chore.description}</TableCell>
-                            {/* 
-
-                            <TableCell align="leading">{chore.title}</TableCell>
-                            <TableCell align="leading">{chore.dueDate.toLocaleDateString()}</TableCell>
-                            <TableCell align="leading">{chore.assignee}</TableCell>
-                            <TableCell align="leading">{chore.description}</TableCell> */}
+                            <TableCell align="left">{chore.assignee}</TableCell>
+                            <TableCell algin="left">{chore.description}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
