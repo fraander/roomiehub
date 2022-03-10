@@ -2,6 +2,7 @@ import "./App.css";
 
 import ChoreTable from "./components/ChoresTable";
 import RoommatesTable from "./components/RoommatesTable";
+import RoommatesList from "./components/RoommatesList.js";
 import NewChoreModal from "./components/NewChoreModal.js";
 import NewAccountModal from "./components/NewAccountModal.js"
 
@@ -100,7 +101,9 @@ function Dashboard({onLogout, currentUser}) {
             </Stack>
           </Stack>
 
-          <RoommatesTable accounts={accounts} currentUser={currentUser} /> {/* Round this box? */}
+          <RoommatesList accounts={accounts} currentUser={currentUser}/>
+
+          {/* <RoommatesTable accounts={accounts} currentUser={currentUser} />  */}
         </Stack>
 
         <ChoreTable chores={chores} onRemove={removeChore} currentUser={currentUser}/>
