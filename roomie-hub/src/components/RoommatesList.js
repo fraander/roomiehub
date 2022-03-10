@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 
 export default function RoommatesList({ accounts, currentUser }) {
     return (
-        <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        <Box sx={{ width: '30%', bgcolor: 'background.paper' }}>
             <List>
                 <ListItem>
                     <ListItemAvatar>
