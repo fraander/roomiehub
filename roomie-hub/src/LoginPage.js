@@ -21,6 +21,7 @@ const style = {
 function LoginPage({ onLogin }) {
 
     const [username, setUsername] = useState("");
+    const [groupCode, setGroupCode] = useState("");
 
     return (
         <div className="App">
@@ -36,8 +37,17 @@ function LoginPage({ onLogin }) {
                         onChange={(e) => setUsername(e.target.value)}
                     />
 
+<TextField
+                        required
+                        id="filled-basic"
+                        label="Group Code"
+                        variant="outlined"
+                        value={groupCode}
+                        onChange={(e) => setGroupCode(e.target.value)}
+                    />
+
                     <Button
-                        onClick={() => onLogin(username)}
+                        onClick={() => onLogin(username, groupCode)}
                     >
                         Login
                     </Button>

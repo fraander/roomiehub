@@ -7,17 +7,17 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 
-const NewAccountModal = ({ onAddAccount }) => {
+const NewAccountModal = ({ groupCode }) => {
 
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
 
-  const createAccount = (e) => {
-    e.preventDefault();
+  // const createAccount = (e) => {
+  //   e.preventDefault();
 
-    onAddAccount({ name });
+  //   onAddAccount({ name });
 
-    setName("");
-  };
+  //   setName("");
+  // };
 
   const style = {
     position: 'absolute',
@@ -36,16 +36,18 @@ const NewAccountModal = ({ onAddAccount }) => {
         <Stack spacing={2}>
           <legend><h2>New Roomie</h2></legend>
 
-          <TextField
+          {/* <TextField
             id="filled-basic"
             label="Name"
             variant="outlined"
             value={name}
             onChange={(e) => setName(e.target.value)}
-          />
-          <p>
-            <Button variant="contained" onClick={createAccount}>Add Roomie</Button>
-          </p>
+          /> */}
+          <Stack direction="row">
+            <p>
+              Have your roommates join with <i><b>{groupCode}</b></i> as their group code.
+            </p>
+          </Stack>
 
         </Stack>
       </Box>

@@ -20,7 +20,7 @@ export default function RoommatesList({ accounts, currentUser }) {
                     <ListItemText primary={currentUser} />
                 </ListItem>
                 
-                {accounts.map((account) => (
+                {accounts.filter( ({name}) => name !== currentUser ).map((account) => (
                     <ListItem>
                     <ListItemAvatar>
                         <Avatar>

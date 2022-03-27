@@ -11,7 +11,7 @@ import Modal from '@mui/material/Modal';
 
 import { useState } from "react";
 
-function Dashboard({onLogout, currentUser}) {
+function Dashboard({ onLogout, currentUser, groupCode }) {
 
   const [showModal, setShowModal] = useState(false);
   const [showNewAccountModal, setNewAccountModal] = useState(false);
@@ -22,13 +22,21 @@ function Dashboard({onLogout, currentUser}) {
   const handleShowNewAccountModal = () => setNewAccountModal(true);
   const handleHideNewAccountModal = () => setNewAccountModal(false);
 
-  const [chores, setChores] = useState([]);
-  const [accounts, setAccounts] = useState([]);
+  const localStorageChoreData = localStorage.getItem(`chores_${groupCode}`)
+
+  const localStorageRoommateData = localStorage.getItem(`roommates_${groupCode}`)
+
+  const [chores, setChores] = useState(!!localStorageChoreData ? JSON.parse(localStorageChoreData) : []);
+  const [roommates, setRoommates] = useState(!!localStorageRoommateData ? JSON.parse(localStorageRoommateData) : []);
 
   const addChore = (chore) => {
     const id = (Math.random() * 1000).toFixed(0); // generate uuid?
     const newChore = { id, ...chore };
-    setChores([...chores, newChore]);
+    const newChores = [...chores, newChore]
+
+    setChores(newChores);
+    localStorage.setItem(`chores_${groupCode}`, JSON.stringify(newChores))
+
     console.log(chores);
 
     handleHideNewChoreModal();
@@ -37,15 +45,22 @@ function Dashboard({onLogout, currentUser}) {
   const removeChore = (chore) => {
     console.log(chore)
     const newChores = chores.filter((c) => c.id !== chore.id)
-    console.log(newChores)
+
     setChores(newChores)
+    localStorage.setItem(`chores_${groupCode}`, JSON.stringify(newChores))
+
+    console.log(newChores)
   }
 
   const addAccount = (account) => {
-    const id = (Math.random() * 1000).toFixed(0);
+    const id = roommates.length;
     const newAccount = { id, ...account };
-    setAccounts([...accounts, newAccount])
-    console.log(accounts)
+    const newAccounts = [...roommates, newAccount]
+    
+    setRoommates(newAccounts)
+    localStorage.setItem(`roommates_${groupCode}`, JSON.stringify(newAccounts))
+
+    console.log(roommates)
 
     handleHideNewAccountModal();
   }
@@ -56,22 +71,28 @@ function Dashboard({onLogout, currentUser}) {
         open={showModal}
         onClose={handleHideNewChoreModal}
       >
-        <NewChoreModal roommates={accounts} onAdd={addChore} currentUser={currentUser} />
+        <NewChoreModal roommates={roommates} onAdd={addChore} currentUser={currentUser} />
       </Modal>
 
       <Modal
         open={showNewAccountModal}
         onClose={handleHideNewAccountModal}
       >
-        <NewAccountModal onAddAccount={addAccount} />
+        <NewAccountModal groupCode={groupCode} />
       </Modal>
 
       <Stack spacing={2}>
         <Stack direction="row" spacing={4}>
           <Stack>
-            <h1>
-              Welcome, {currentUser}
-            </h1>
+            <Stack spacing={0}>
+              <h1>
+                Welcome, {currentUser}
+              </h1>
+
+              <h3>
+                Group Code: {groupCode}
+              </h3>
+            </Stack>
 
             <Stack direction="row" spacing={2}>
               <Button
@@ -100,11 +121,11 @@ function Dashboard({onLogout, currentUser}) {
             </Stack>
           </Stack>
 
-          <RoommatesList accounts={accounts} currentUser={currentUser}/>
+          <RoommatesList accounts={roommates} currentUser={currentUser} />
 
         </Stack>
 
-        <ChoreTable chores={chores} onRemove={removeChore} currentUser={currentUser}/>
+        <ChoreTable chores={chores} onRemove={removeChore} currentUser={currentUser} />
 
       </Stack>
     </div>

@@ -82,7 +82,6 @@ const NewChoreModal = ({ roommates, onAdd, currentUser }) => {
               onChange={(e) => setAssignee(e.target.value)}
             >
               <MenuItem value={""}>None</MenuItem>
-              <MenuItem value={currentUser}>{currentUser}</MenuItem>
               {roommates.map((roommate) => (
                 <MenuItem value={roommate.name}>{roommate.name}</MenuItem>
               ))}
