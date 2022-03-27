@@ -16,7 +16,7 @@ const style = {
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
-  };
+};
 
 function LoginPage({ onLogin }) {
 
@@ -27,6 +27,9 @@ function LoginPage({ onLogin }) {
         <div className="App">
             <Box sx={style}>
                 <Stack spacing={2}>
+                    <Stack alignItems="center">
+                        <h1>Roomie Hub 🐳</h1>
+                    </Stack>
 
                     <TextField
                         required
@@ -37,7 +40,7 @@ function LoginPage({ onLogin }) {
                         onChange={(e) => setUsername(e.target.value)}
                     />
 
-<TextField
+                    <TextField
                         required
                         id="filled-basic"
                         label="Group Code"
