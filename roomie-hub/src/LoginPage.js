@@ -27,11 +27,11 @@ function LoginPage({ onLogin }) {
         <div className="App">
             <Box sx={style}>
                 <Stack spacing={2}>
-                    <Stack alignItems="center">
+                    <Stack alignItems="center"> {/* header text */}
                         <h1>Roomie Hub 🐳</h1>
                     </Stack>
 
-                    <TextField
+                    <TextField // username text field
                         required
                         id="filled-basic"
                         label="Username"
@@ -40,7 +40,7 @@ function LoginPage({ onLogin }) {
                         onChange={(e) => setUsername(e.target.value)}
                     />
 
-                    <TextField
+                    <TextField // group code text field
                         required
                         id="filled-basic"
                         label="Group Code"
@@ -49,7 +49,7 @@ function LoginPage({ onLogin }) {
                         onChange={(e) => setGroupCode(e.target.value)}
                     />
 
-                    <Button
+                    <Button // submit button
                         onClick={() => onLogin(username, groupCode)}
                     >
                         Login

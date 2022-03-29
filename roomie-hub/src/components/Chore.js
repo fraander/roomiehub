@@ -15,7 +15,7 @@ Chore.defaultProps = {
   title: "Title",
   description: "description",
   assignee: "person",
-  dueDate: "today",
+  dueDate: null,
 };
 
 export default Chore;

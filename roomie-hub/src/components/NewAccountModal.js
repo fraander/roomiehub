@@ -34,7 +34,7 @@ const NewAccountModal = ({ groupCode }) => {
     <div>
       <Box sx={style}>
         <Stack spacing={2}>
-          <legend><h2>New Roomie</h2></legend>
+          <legend><h2>Add a roomie</h2></legend>
 
           {/* <TextField
             id="filled-basic"

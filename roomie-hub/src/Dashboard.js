@@ -23,14 +23,13 @@ function Dashboard({ onLogout, currentUser, groupCode }) {
   const handleHideNewAccountModal = () => setNewAccountModal(false);
 
   const localStorageChoreData = localStorage.getItem(`chores_${groupCode}`)
-
   const localStorageRoommateData = localStorage.getItem(`roommates_${groupCode}`)
 
   const [chores, setChores] = useState(!!localStorageChoreData ? JSON.parse(localStorageChoreData) : []);
   const [roommates, setRoommates] = useState(!!localStorageRoommateData ? JSON.parse(localStorageRoommateData) : []);
 
   const addChore = (chore) => {
-    const id = (Math.random() * 1000).toFixed(0); // generate uuid?
+    const id = chores.length;
     const newChore = { id, ...chore };
     const newChores = [...chores, newChore]
 
@@ -67,14 +66,14 @@ function Dashboard({ onLogout, currentUser, groupCode }) {
 
   return (
     <div className="App">
-      <Modal
+      <Modal // new chore modal
         open={showModal}
         onClose={handleHideNewChoreModal}
       >
         <NewChoreModal roommates={roommates} onAdd={addChore} currentUser={currentUser} />
       </Modal>
 
-      <Modal
+      <Modal // new roommate modal
         open={showNewAccountModal}
         onClose={handleHideNewAccountModal}
       >
@@ -84,7 +83,7 @@ function Dashboard({ onLogout, currentUser, groupCode }) {
       <Stack spacing={2}>
         <Stack direction="row" spacing={4}>
           <Stack>
-            <Stack spacing={0}>
+            <Stack spacing={0}> {/* welcome + group code text */}
               <h1>
                 Welcome, {currentUser}
               </h1>
@@ -94,7 +93,7 @@ function Dashboard({ onLogout, currentUser, groupCode }) {
               </h3>
             </Stack>
 
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2}> {/* buttons stack */}
               <Button
                 variant="contained"
                 onClick={handleShowNewChoreModal}
@@ -121,11 +120,11 @@ function Dashboard({ onLogout, currentUser, groupCode }) {
             </Stack>
           </Stack>
 
-          <RoommatesList accounts={roommates} currentUser={currentUser} />
+          <RoommatesList accounts={roommates} currentUser={currentUser} /> {/* Roommates list */}
 
         </Stack>
 
-        <ChoreTable chores={chores} onRemove={removeChore} currentUser={currentUser} />
+        <ChoreTable chores={chores} onRemove={removeChore} currentUser={currentUser} /> {/* Chores table */}
 
       </Stack>
     </div>

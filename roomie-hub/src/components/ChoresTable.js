@@ -10,7 +10,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-export default function ChoreTable({ chores, onRemove, currentUser }) {
+export default function ChoreTable({ chores, onRemove }) {
+
+    const formatDueDate = (chore) => {
+        const newDate = new Date(chore.dueDate)
+        return (!!newDate ? `${newDate.getMonth()}/${newDate.getDate()}` : "")
+    }
 
     return (
         <TableContainer component={Paper}>
@@ -31,13 +36,12 @@ export default function ChoreTable({ chores, onRemove, currentUser }) {
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell align="left">
-                                <CheckButton onRemove={() => onRemove(chore)}/>
+                                <CheckButton onRemove={() => onRemove(chore)} />
                             </TableCell>
 
                             <TableCell align="left">{chore.title}</TableCell>
                             <TableCell align="left">{
-                                chore.dueDate === null ? "" :
-                            chore.dueDate.toLocaleDateString()
+                                formatDueDate(chore)
                             }</TableCell>
                             <TableCell align="left">{chore.assignee}</TableCell>
                             <TableCell algin="left">{chore.description}</TableCell>
