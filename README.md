@@ -1,6 +1,10 @@
 # Roomie hub 🐳
 The essential tool to track chores, groceries, schedules, and more with your roommates!
 
+# Getting Started
+- [ ] Make sure you have NPM installed.
+- [ ] Navigate to `roomie-hub` and run `npm start`
+
 # Screens
 ## Login Page
 Log in with a display name and group code. All chores are shared between users of the same group code. Joining a new group adds you to the list of roommates.
