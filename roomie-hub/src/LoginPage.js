@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 
+import React from 'react';
+
 import { useState } from "react";
 
 const style = {
@@ -28,7 +30,7 @@ function LoginPage({ onLogin }) {
             <Box sx={style}>
                 <Stack spacing={2}>
                     <Stack alignItems="center"> {/* header text */}
-                        <h1>Roomie Hub 🐳</h1>
+                        <h1>Roomie Hub <span role="img" aria-label="Whale">🐳</span></h1>
                     </Stack>
 
                     <TextField // username text field

@@ -1,5 +1,7 @@
 import "./App.css";
 
+import React  from 'react';
+
 import ChoreTable from "./components/ChoresTable";
 import RoommatesList from "./components/RoommatesList.js";
 import NewChoreModal from "./components/NewChoreModal.js";
@@ -26,7 +28,7 @@ function Dashboard({ onLogout, currentUser, groupCode }) {
   const localStorageRoommateData = localStorage.getItem(`roommates_${groupCode}`)
 
   const [chores, setChores] = useState(!!localStorageChoreData ? JSON.parse(localStorageChoreData) : []);
-  const [roommates, setRoommates] = useState(!!localStorageRoommateData ? JSON.parse(localStorageRoommateData) : []);
+  const [roommates] = useState(!!localStorageRoommateData ? JSON.parse(localStorageRoommateData) : []);
 
   const addChore = (chore) => {
     const id = chores.length;
@@ -49,19 +51,6 @@ function Dashboard({ onLogout, currentUser, groupCode }) {
     localStorage.setItem(`chores_${groupCode}`, JSON.stringify(newChores))
 
     console.log(newChores)
-  }
-
-  const addAccount = (account) => {
-    const id = roommates.length;
-    const newAccount = { id, ...account };
-    const newAccounts = [...roommates, newAccount]
-    
-    setRoommates(newAccounts)
-    localStorage.setItem(`roommates_${groupCode}`, JSON.stringify(newAccounts))
-
-    console.log(roommates)
-
-    handleHideNewAccountModal();
   }
 
   return (
