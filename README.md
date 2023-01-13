@@ -2,7 +2,8 @@
 The essential tool to track chores, groceries, schedules, and more with your roommates!
 
 # Getting Started
-- [ ] Make sure you have NPM installed.
+- [ ] Install NPM. `npm install`
+- [ ] Install the following from MUI: `@mui/material`, `@mui/icons-material`, `@mui/core`, `@mui/lab`
 - [ ] Navigate to `roomie-hub` and run `npm start`
 
 # Screens
