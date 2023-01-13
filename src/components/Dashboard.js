@@ -4,7 +4,7 @@ import ChoreTable from "./ChoresTable";
 import RoommatesList from "./RoommatesList.js";
 import NewChoreModal from "./NewChoreModal.js";
 import NewAccountModal from "./NewAccountModal.js";
-import Join from "./Join";
+import LoginInfo from "./LoginInfo";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -81,22 +81,20 @@ function Dashboard({ onLogout, currentUser, groupCode }) {
 
       <Stack spacing={2}>
         <Stack direction="row" spacing={4}>
-          <Join
+          <LoginInfo
             currentUser={currentUser}
             groupCode={groupCode}
             handleShowNewChoreModal={handleShowNewChoreModal}
             handleShowNewAccountModal={handleShowNewAccountModal}
             onLogout={onLogout}
           />
-          <RoommatesList accounts={roommates} currentUser={currentUser} />{" "}
-          {/* Roommates list */}
+          <RoommatesList accounts={roommates} currentUser={currentUser} />
         </Stack>
         <ChoreTable
           chores={chores}
           onRemove={removeChore}
           currentUser={currentUser}
-        />{" "}
-        {/* Chores table */}
+        />
       </Stack>
     </div>
   );

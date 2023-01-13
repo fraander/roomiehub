@@ -1,7 +1,7 @@
 import { Stack } from "@mui/system";
 import { Button } from "@mui/material";
 
-export default function Join({
+export default function LoginInfo({
   currentUser,
   groupCode,
   handleShowNewChoreModal,
