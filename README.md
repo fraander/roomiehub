@@ -6,6 +6,9 @@ The essential tool to track chores, groceries, schedules, and more with your roo
 - [ ] Install the following from MUI: `@mui/material`, `@mui/icons-material`, `@mui/core`, `@mui/lab`
 - [ ] Navigate to `roomie-hub` and run `npm start`
 
+# Published Demo
+https://dancing-bienenstitch-1ed9f7.netlify.app/
+
 # Screens
 ## Login Page
 Log in with a display name and group code. All chores are shared between users of the same group code. Joining a new group adds you to the list of roommates.
